@@ -1,0 +1,37 @@
+<div class="row">
+<div class="col-sm-4">
+<nav>
+<ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+</nav>
+</div>
+<div class="col-sm-8">
+  <div class="jumbotron">
+      <h1>PlanIt</h1>
+      
+        <% if user_signed_in? %>
+          <h4>Welcome to PlanIt, #{current_user.name}! </h4>
+            
+        <% else %>
+          <p>
+            <h4>Register your application to begin gathering insights.</h4>
+
+            <%= link_to "Sign Up", new_user_registration_path, class: 'btn-primary btn-lg'%>
+            <%= link_to "Sign In", new_user_session_path, class: 'btn-success btn-lg' %>
+          </p>
+        <% end %>
+    </div>
+  </div>
+</div>
