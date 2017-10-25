@@ -19,7 +19,7 @@
   				<div class="row">
   					<nav>
     			<% if current_user %>
-      			Welcome, <%= current_user.name %>! | <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      			Welcome, <%= current_user.name %>! | <%= link_to "Logout", destroy_user_session_path, method: :delete %> | <%= link_to "Home", authenticated_root_path %>
       			<br>
       
     			     <% else %>
@@ -29,11 +29,35 @@
  
 </nav>
 </div>
+<div class="row">
+   <div class="col-sm-4">
+      <nav>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <%= link_to "Create Event", new_event_path, class: 'btn-primary btn-lg'%>
+        </li>
+        <li class="nav-item">
+           <%= link_to "My Events", events_path, class: 'btn-primary btn-lg'%>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      </nav>
+  </div>
+  <div class="col-sm-8">
+      <%= yield %>
+
+  </div>
+</div>
 
 
 		
 
-		<%= yield %>
+	
 	</div>
 
 </body>

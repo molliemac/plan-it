@@ -1,0 +1,10 @@
+    <% @my_events.each do |my_event| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to my_event.name, event_path(my_event) %>
+          </h4>
+          
+        </div>
+      </div>
+    <% end %>
