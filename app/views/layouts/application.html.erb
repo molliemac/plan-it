@@ -7,8 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=1971407546474954";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+  			<div class="container">
+  				<div class="row">
+  					<nav>
+    			<% if current_user %>
+      			Welcome, <%= current_user.name %>! | <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      			<br>
+      
+    			     <% else %>
+                  <%= link_to "Log In", new_user_session_path  %> | <%= link_to "Sign Up", new_user_registration_path %>
 
-<%= yield %>
+            <% end %>
+ 
+</nav>
+</div>
+
+
+		
+
+		<%= yield %>
+	</div>
 
 </body>
 </html>
