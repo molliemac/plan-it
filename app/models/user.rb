@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :events
+  has_many :event_users
+  has_many :events, through: :event_users
+
+  attr_accessor :email
   
   enum role: [:user, :collaborator, :organizer]
   after_initialize :set_default_role, :if => :new_record?
@@ -10,7 +13,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable, :invitable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   def self.from_omniauth(auth)

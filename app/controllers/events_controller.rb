@@ -1,11 +1,13 @@
 class EventsController < ApplicationController
+	before_action :authenticate_user!
+	before_action :set_event, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@my_events = Event.all
+		@my_events = current_user.events
 	end
 
 	def show
-		
+		@my_event = Event.find(params[:id])
 	end
 
 	def new
@@ -14,15 +16,13 @@ class EventsController < ApplicationController
 
 	def create
 		@my_event = Event.new(event_params)
-		  if @my_event.save
-		    flash[:notice] = 'Your event has been created'
-		    redirect_to events_path
+		@my_event.event_users.new(user: current_user, role: "organizer")
+			if @my_event.save
+				redirect_to events_path, notice: "#{@my_event.name} has been created."
 		  else
 		    flash.now[:warning] = 'There were problems when trying to create a new event'
 		    render :action => :new
 		  end
-		@my_event.user = current_user
-
 	end
 
 	def destroy
@@ -34,12 +34,7 @@ class EventsController < ApplicationController
 	  params.require(:event).permit(:name, :date, :time, :location, :description)
 	 end
 
-	#def authorize_user
-		#event = Event.find(params[:id])
-
-		#unless current_user == event.user || current_user.collaborator?
-			#flash[:alert] = "You must be invited to this event to view it."
-			#redirect_to events_path
-		#end
-	#end
+	def set_event
+		@my_event = current_user.events.find(params[:id])
+	end
 end

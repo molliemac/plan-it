@@ -1,0 +1,22 @@
+<div class="col-md-8">
+	<p id="notice"><%= notice %></p>
+	<h1><%= @my_event.name %></h1>
+    <h4>Invite Friends to your Event</h4>
+
+    <%= form_for [@my_event, EventUser.new] do |f| %>
+	    <div>
+	    	<%= f.text_field :email, required: true %>
+	    </div>
+
+    	<%= f.submit "Invite" %>
+    <% end %>
+
+	<%= link_to 'Edit', edit_event_path(@my_event) %>
+
+	<h4>Guests/Attendees</h4>
+	<%= @my_event.users.each do |user| %>
+		<div><%= user.email %></div>
+		<div><%= current_user.role %></div>
+	<% end %>
+	
+</div>
