@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :event_users
   has_many :events, through: :event_users
 
-  attr_accessor :email
+  attr_accessor :email, :role, :encrypted_password, :created_at, :updated_at
   
   enum role: [:user, :collaborator, :organizer]
   after_initialize :set_default_role, :if => :new_record?

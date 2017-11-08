@@ -1,0 +1,8 @@
+<h1>YelpSearches#search</h1>
+<p>Find me in app/views/yelp_searches/search.html.erb</p>
+
+<%= form_tag yelp_search_path, :method => :post do %>
+Location: <%=text_field_tag :location %><br />
+Term: <%=text_field_tag :term %>
+<%=submit_tag 'Save' %>
+<%end%>
