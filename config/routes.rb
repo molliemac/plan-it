@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
   resources :home
-  resources :locations do
-  get 'list', :on => :collection
-end
+  resources :locations
 
 
   resources :events do
