@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  get 'yelp_searches/search'
 
   resources :home
-  resources :yelp_searches
+  resources :locations do
+  get 'list', :on => :collection
+end
+
 
   resources :events do
     resources :event_users, path: :users, module: :events

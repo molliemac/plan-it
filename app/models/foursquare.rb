@@ -1,9 +1,20 @@
 class Foursquare
-	 def self.search_venues(text)
-        client.search_venues(:ll => '36.142064,-86.816086', :query => text)
-    end
 
-    def self.client
-        @client ||= Foursquare2::Client.new(:client_id => 'your_client_id', :client_secret => 'your_secret')
-    end
+	def initialize(name, zipcode)
+		@name = name
+		@zipcode = zipcode
+	end
+
+	def self.search_venues(name, zipcode)
+    	client.search_venues(:near => zipcode, :query => name, :v => '20170711', :limit => '5')
+  	end
+
+  def self.client
+    @client ||= Foursquare2::Client.new(:client_id => ENV['FOURSQUARE_CLIENT_ID'], :client_secret => ENV['FOURSQUARE_CLIENT_SECRET'])
+  end
+
+  def self.find(name, zipcode)
+  	client.search_venues(:near => zipcode, :query => name, :v => '20170711', :limit => '5')
+  end
+  
 end

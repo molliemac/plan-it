@@ -1,0 +1,8 @@
+<h1>Search for Places Near Me</h1>
+<%= form_tag '/locations' do %>
+    <%= label_tag "Venue Name" %>
+  <%= text_field_tag "name", params[:near] %>
+   <%= label_tag "Zipcode" %>
+  <%= text_field_tag "zipcode", params[:query] %>
+  <%= submit_tag "Search!" %>
+<% end %>

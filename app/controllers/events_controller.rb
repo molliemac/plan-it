@@ -28,6 +28,7 @@ class EventsController < ApplicationController
 	def destroy
 	end
 
+
 	private
 
 	def event_params
