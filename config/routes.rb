@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   resources :home
-  resources :locations
-
+  get '/foursquare', to: 'locations#foursquare'
+  post '/foursquare', to: 'locations#foursquare'
+  
 
   resources :events do
     resources :event_users, path: :users, module: :events

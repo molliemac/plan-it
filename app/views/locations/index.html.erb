@@ -1,10 +1,6 @@
 <div class="col-md-8">
-
-<h1 class="page-header">Places Near <%= params[:zipcode] %></h1>
-<ul>
- <% @locations.each do |location| %>
-   <li><%= location.name %> </li>
- <% end %>
-</ul>
-
+	<h1 class="page-header">Places Near <%= params[:zipcode] %></h1>
+		<%= @venues.each do |venue| %>
+		<div><%= params[:name] %></div>
+	<% end %>
 </div>

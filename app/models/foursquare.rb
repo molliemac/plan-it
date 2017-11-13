@@ -6,7 +6,7 @@ class Foursquare
 	end
 
 	def self.search_venues(name, zipcode)
-    	client.search_venues(:near => zipcode, :query => name, :v => '20170711', :limit => '5')
+    	venues = client.search_venues(:ll => '36.142064,-86.816086', :query => name, :v => '20170711', :limit => '5')
   	end
 
   def self.client
@@ -14,7 +14,10 @@ class Foursquare
   end
 
   def self.find(name, zipcode)
-  	client.search_venues(:near => zipcode, :query => name, :v => '20170711', :limit => '5')
+  	client.search_venues(:ll => zipcode, :query => name, :v => '20170711', :limit => '5')
   end
+
+
+
   
 end
