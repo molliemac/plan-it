@@ -25,4 +25,5 @@
  gem 'turbolinks'
  gem 'foursquare2'
  gem 'faraday'
+ gem 'activerecord-session_store', '~> 1.0'
 
