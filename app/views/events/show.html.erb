@@ -1,10 +1,9 @@
 <div class="col-md-8">
-	<p id="notice"><%= notice %></p>
 	<h1><%= @my_event.name %></h1>
-	<p><%= @my_event.description %></p>
-	<p><%= @my_event.date %></p>
-	<p><%= @my_event.time %></p>
-	<p><%= @my_event.location %></p>
+	<p>Event Description:<%= @my_event.description %></p>
+	<p>Event Date:<%= @my_event.date %></p>
+	<p>Event Time: <%= @my_event.time %></p>
+	<p>Location: <%= @my_event.location %></p>
     <h4>Invite Friends to your Event</h4>
 
     <%= form_for [@my_event, EventUser.new] do |f| %>

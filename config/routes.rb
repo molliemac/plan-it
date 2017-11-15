@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
+
   resources :home
 
   get '/foursquare', to: 'locations#foursquare'
@@ -15,6 +17,6 @@ Rails.application.routes.draw do
 
 
   get "welcome/index"
-  root 'welcome#index'
+  root 'home#index'
 
 end
