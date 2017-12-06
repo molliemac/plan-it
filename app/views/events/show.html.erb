@@ -3,7 +3,7 @@
 	<p>Event Description:<%= @my_event.description %></p>
 	<p>Event Date:<%= @my_event.date %></p>
 	<p>Event Time: <%= @my_event.time %></p>
-	<p>Location: <%= @my_event.location %></p>
+	<p>Location: <%= link_to 'Find a location for your event', foursquare_path %></p>
     <h4>Invite Friends to your Event</h4>
 
     <%= form_for [@my_event, EventUser.new] do |f| %>

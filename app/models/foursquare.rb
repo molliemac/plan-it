@@ -17,7 +17,9 @@ class Foursquare
   	client.search_venues(:ll => zipcode, :query => name, :v => '20170711', :limit => '5')
   end
 
+    def save_location
+    @saved_location = Location.create(:query => params[:q])
 
-
-  
+  end
+ 
 end

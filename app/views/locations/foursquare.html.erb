@@ -14,7 +14,8 @@
 	 <li>
 	 <%= venue["name"] %><br>
 	 <%= venue["location"]["address"] %><br>
-	 <%= link_to venue["url"] %>
+	 <%= link_to venue["url"] %><br>
+	 <%= link_to('Save Search', saved_search_add_path(@my_event, :q => :name)) %>
 	 </li>
 	 <% end %>
 	 </ul>

@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :home
+  get 'locations/:id/saved_search_add' => 'locations#saved_search_add', :as => :saved_search_add
+
 
   get '/foursquare', to: 'locations#foursquare'
-  post '/foursquare', to: 'locations#search'
+  post '/foursquare', to: 'locations#foursquare'
   
 
   resources :events do

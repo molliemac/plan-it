@@ -15,5 +15,17 @@ class LocationsController < ApplicationController
     @categories = params[:category]
   end
 
-end #ends class
+ def saved_search_add
+  @saved_search = Location.create(:query => params[:q])
+
+  respond_to do |format|
+    if @saved_search.save
+      format.html { redirect_to(:back) }
+    else
+      format.html { redirect_to(:back) }
+    end
+  end
+end
+
+end 
 
